@@ -59,6 +59,36 @@ class Clothing extends Product {
   } // method overriding
 }
 
+/*
+const date = new Date();
+console.log(date);
+console.log(date.toLocaleTimeString());
+*/
+
+/*
+console.log(this);
+const object2 = {
+  a: 2,
+  b: this.a
+};
+*/
+
+/*
+function logThis(param1, param2){
+  console.log(this);
+}
+logThis('param1', 'param2');
+logThis.call('hello', 'param1', 'param2'); // can set the value of this
+
+this;
+const obj = {
+  method: () => {
+    console.log(this); // "this" keeps that value it had outside the arrow function 
+  }
+}
+obj.method();
+*/
+
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
