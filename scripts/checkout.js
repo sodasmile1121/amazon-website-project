@@ -10,14 +10,12 @@ async function loadPage(){
 
   const value = await new Promise((resolve) => {
     loadCart(() => {
-      resolve(); 
+      resolve('value3'); 
     });
   });
 
   renderOrderSummary();
   renderPaymentSummary();
-
-  return 'value2';
 }
 loadPage();
 
