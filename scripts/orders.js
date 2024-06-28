@@ -15,7 +15,6 @@ async function renderOrdersGrid(){
   orders.forEach((order) => {
     const orderDate = formatDateString(order.orderTime);
     const totalCost = formatCurrency(order.totalCostCents);
-    
     ordersHTML += `
      <div class="order-container">
       
@@ -38,13 +37,15 @@ async function renderOrdersGrid(){
       </div>
 
       <div class="order-details-grid">  
-        ${productsListHTML(order.products)} 
+        ${productsListHTML(order)} 
       </div>
     </div>
   `
   })
 
-  function productsListHTML(orderItems){
+  function productsListHTML(order){
+
+    const orderItems = order.products;
 
     let productsListHTML = '';
 
@@ -74,7 +75,7 @@ async function renderOrdersGrid(){
         </div>
 
         <div class="product-actions">
-          <a href="tracking.html?orderId=123&productId=456">
+          <a href="tracking.html?orderId=${order.id}&productId=${product.id}">
             <button class="track-package-button button-secondary">
               Track package
             </button>
