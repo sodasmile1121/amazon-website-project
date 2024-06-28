@@ -13,7 +13,7 @@ async function renderOrdersGrid(){
   let ordersHTML = '';
 
   orders.forEach((order) => {
-    const orderDate = formatDateString(order.orderTime);
+    const orderDate = formatDateString(order.orderTime, 'MMM D');
     const totalCost = formatCurrency(order.totalCostCents);
     ordersHTML += `
      <div class="order-container">
@@ -50,7 +50,7 @@ async function renderOrdersGrid(){
     let productsListHTML = '';
 
     orderItems.forEach((orderItem) => {
-      const deliveryDate = formatDateString(orderItem.estimatedDeliveryTime);
+      const deliveryDate = formatDateString(orderItem.estimatedDeliveryTime, 'MMM D');
       const product = getProduct(orderItem.productId);
 
       productsListHTML += `
