@@ -2,6 +2,7 @@ import { orders } from "../data/orders.js";
 import { getProduct, loadProductsFetch } from "../data/products.js";
 import formatDateString from "./utils/date.js";
 import formatCurrency from "./utils/money.js";
+import { addToCart, updateCartQuantity} from "../data/cart.js";
 
 renderOrdersGrid();
 
@@ -66,7 +67,7 @@ async function renderOrdersGrid(){
           <div class="product-quantity">
             Quantity: ${orderItem.quantity}
           </div>
-          <button class="buy-again-button button-primary">
+          <button class="buy-again-button button-primary js-buy-again-button" data-product-id=${product.id}>
             <img class="buy-again-icon" src="images/icons/buy-again.png">
             <span class="buy-again-message">Buy it again</span>
           </button>
@@ -84,5 +85,24 @@ async function renderOrdersGrid(){
 
     return productsListHTML;
   }
+
   document.querySelector('.js-orders-grid').innerHTML = ordersHTML;
+
+  document.querySelectorAll('.js-buy-again-button').forEach((button) => {
+    button.addEventListener('click', () => {
+
+      const productId = button.dataset.productId;
+      addToCart(productId);
+      updateCartQuantity();
+
+      button.innerHTML = '&#10003; Added';
+      setTimeout(() => {
+        button.innerHTML = `
+          <img class="buy-again-icon" src="images/icons/buy-again.png">
+          <span class="buy-again-message">Buy it again</span>
+        `
+      }, 1000);
+      
+    });
+  });
 }
