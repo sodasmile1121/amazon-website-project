@@ -7,7 +7,7 @@ renderOrdersGrid();
 
 async function renderOrdersGrid(){
 
-  let allProduct = await loadProductsFetch();
+  await loadProductsFetch();
 
   let ordersHTML = '';
 
