@@ -57,6 +57,10 @@ export function renderPaymentSummary(){
 
   document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHTML;
 
+  function clearCart() {
+    localStorage.removeItem('cart');
+  }
+
   document.querySelector('.js-place-order')
     .addEventListener('click', async () => {
       try {
@@ -72,7 +76,7 @@ export function renderPaymentSummary(){
     
         const order = await response.json();
         addOrder(order);
-
+        clearCart();
       } catch (error) {
         console.log('Unexpected error. Try again later.');
       }
