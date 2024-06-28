@@ -1,6 +1,7 @@
 import { orders, getOrder } from "../data/orders.js";
 import { getProduct, loadProductsFetch } from "../data/products.js";
-import { formatDateString } from "./utils/date.js";
+import { formatDateString, dateTimeDiff } from "./utils/date.js";
+import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
 renderTrackPackage();
 
@@ -21,6 +22,23 @@ async function renderTrackPackage(){
       orderItem = product;
     }
   })
+
+  function calProgressPercent(){
+    const orderTime = order.orderTime;
+    const deliveryTime = orderItem.estimatedDeliveryTime;
+    const currentTime = dayjs();
+    // const currentTime = dayjs().add(1, 'day');
+
+    const progressPercent = dateTimeDiff(currentTime, orderTime) / dateTimeDiff(deliveryTime, orderTime);
+
+    return progressPercent;
+  }
+
+  const progressPercent = calProgressPercent();
+  const progressStatus = 
+    (progressPercent >= 1)? 'Delivered'
+    : (progressPercent >= 0.5)? 'Shipped'
+    : 'Preparing';
 
   let trackPackageHTML = '';
 
@@ -43,7 +61,7 @@ async function renderTrackPackage(){
       <div class="progress-label">
         Preparing
       </div>
-      <div class="progress-label current-status">
+      <div class="progress-label">
         Shipped
       </div>
       <div class="progress-label">
@@ -57,4 +75,10 @@ async function renderTrackPackage(){
   `
 
   document.querySelector('.js-render-track-package').innerHTML = trackPackageHTML;
+  document.querySelector('.progress-bar').style.width = (progressPercent * 100) + '%';
+  document.querySelectorAll('.progress-label').forEach((status) => {
+    if (status.innerText === progressStatus){
+      status.classList.add('current-status');
+    }
+  })
 }

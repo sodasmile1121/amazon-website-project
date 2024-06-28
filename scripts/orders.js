@@ -1,6 +1,6 @@
 import { orders } from "../data/orders.js";
 import { getProduct, loadProductsFetch } from "../data/products.js";
-import formatDateString from "./utils/date.js";
+import { formatDateString } from "./utils/date.js";
 import formatCurrency from "./utils/money.js";
 import { addToCart, updateCartQuantity} from "../data/cart.js";
 

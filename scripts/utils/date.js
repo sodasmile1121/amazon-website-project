@@ -4,4 +4,8 @@ export function formatDateString(dateTime, formatString){
   return dayjs(dateTime).format(formatString);
 }
 
-export default formatDateString;
+export function dateTimeDiff(datetime1, datetime2){
+  const date1 = dayjs(datetime1);
+  const date2 = dayjs(datetime2);
+  return date1.diff(date2);
+}
