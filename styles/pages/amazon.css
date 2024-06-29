@@ -154,3 +154,8 @@
   padding: 8px;
   border-radius: 50px;
 }
+
+.empty-result-message {
+  white-space: nowrap;
+  padding: 10px 15px;
+}

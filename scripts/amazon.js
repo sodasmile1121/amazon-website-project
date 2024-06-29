@@ -7,20 +7,36 @@ async function renderProductsGrid(){
 
   await loadProductsFetch();
 
+  const url = new URL(window.location.href);
+  const searchItem = url.searchParams.get('search');
+
+  let filterProducts = products;
+  if (searchItem){
+    filterProducts = products.filter((product) => {
+      return product.name.toLowerCase().includes(searchItem.toLowerCase())
+    })
+  }
+
   let productsHTML = '';
 
-  products.forEach((product) => {
+  if (filterProducts.length === 0){
     productsHTML += `
+      <div class="empty-result-message">No products matched your search.</div>
+    `
+  }
+  else{
+    filterProducts.forEach((product) => {
+      productsHTML += `
       <div class="product-container">
         <div class="product-image-container">
           <img class="product-image"
             src="${product.image}">
         </div>
-
+  
         <div class="product-name limit-text-to-2-lines">
           ${product.name}
         </div>
-
+  
         <div class="product-rating-container">
           <img class="product-rating-stars"
             src="${product.getStarsUrl()}">
@@ -28,11 +44,11 @@ async function renderProductsGrid(){
             ${product.rating.count}
           </div>
         </div>
-
+  
         <div class="product-price">
           ${product.getPrice()}
         </div>
-
+  
         <div class="product-quantity-container">
           <select>
             <option selected value="1">1</option>
@@ -47,22 +63,23 @@ async function renderProductsGrid(){
             <option value="10">10</option>
           </select>
         </div>
-
+  
         ${product.extraInfoHTML()}
         
         <div class="product-spacer"></div>
-
+  
         <div class="added-to-cart">
           <img src="images/icons/checkmark.png">
           Added
         </div>
-
+  
         <button class="add-to-cart-button button-primary js-add-to-cart" data-product-id="${product.id}">
           Add to Cart
         </button>
       </div>  
     `;
-  })
+    }
+  )};
 
   document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
@@ -74,5 +91,19 @@ async function renderProductsGrid(){
     })
   })
 
+  function handleSearhch(){
+    const search = document.querySelector('.js-search-bar').value;
+    window.location.href = `amazon.html?search=${search}`;
+  }
+
+  document.querySelector('.js-search-button').addEventListener('click', handleSearhch);
+  document.querySelector('.js-search-bar').addEventListener('keydown', (event) => {
+    if (event.key === 'Enter'){
+      handleSearhch();
+    }
+  })
+  
   updateCartQuantity();
 }
+
+
