@@ -13,9 +13,11 @@ async function renderProductsGrid(){
   let filterProducts = products;
   if (searchItem){
     filterProducts = products.filter((product) => {
-      return product.name.toLowerCase().includes(searchItem.toLowerCase())
+      return product.name.toLowerCase().includes(searchItem.toLowerCase()) 
+        || product.keywords.some(keyword => keyword.toLowerCase().includes(searchItem.toLowerCase()));
     })
   }
+  console.log(filterProducts);
 
   let productsHTML = '';
 
@@ -102,7 +104,7 @@ async function renderProductsGrid(){
       handleSearhch();
     }
   })
-  
+
   updateCartQuantity();
 }
 
