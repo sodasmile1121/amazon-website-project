@@ -2,7 +2,7 @@ import { orders } from "../data/orders.js";
 import { getProduct, loadProductsFetch } from "../data/products.js";
 import { formatDateString } from "./utils/date.js";
 import formatCurrency from "./utils/money.js";
-import { addToCart, updateCartQuantity} from "../data/cart.js";
+import { addToCart, getCartQuantity} from "../data/cart.js";
 
 renderOrdersGrid();
 
@@ -94,7 +94,7 @@ async function renderOrdersGrid(){
 
       const productId = button.dataset.productId;
       addToCart(productId);
-      updateCartQuantity();
+      document.querySelector('.js-cart-quantity').innerHTML = getCartQuantity();
 
       button.innerHTML = '&#10003; Added';
       setTimeout(() => {

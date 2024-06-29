@@ -1,4 +1,4 @@
-import { cart, addToCart, updateCartQuantity } from '../data/cart.js'
+import { addToCart, getCartQuantity } from '../data/cart.js'
 import { products, loadProductsFetch } from '../data/products.js';
 
 renderProductsGrid();
@@ -91,7 +91,7 @@ async function renderProductsGrid(){
       for (let i=0; i<addTimes; i++){
         addToCart(productId);
       }
-      updateCartQuantity();
+      document.querySelector('.js-cart-quantity').innerHTML = getCartQuantity();
 
       document.querySelector(`.js-added-to-cart-${productId}`).style.opacity = 1;
       setTimeout(() => {
@@ -112,7 +112,7 @@ async function renderProductsGrid(){
     }
   })
 
-  updateCartQuantity();
+  document.querySelector('.js-cart-quantity').innerHTML = getCartQuantity();
 }
 
 
