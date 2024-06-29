@@ -1,4 +1,4 @@
-import { cart, getCartQuantity } from '../../data/cart.js';
+import { cart, getCartQuantity, resetCart } from '../../data/cart.js';
 import { getProduct } from '../../data/products.js';
 import { getDeliveryOption } from '../../data/deliveryOptions.js';
 import formatCurrency from '../utils/money.js';
@@ -57,12 +57,8 @@ export function renderPaymentSummary(){
 
   document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHTML;
 
-  function clearCart() {
-    localStorage.removeItem('cart');
-  }
-
-  document.querySelector('.js-place-order')
-    .addEventListener('click', async () => {
+  const placeOrderButton = document.querySelector('.js-place-order');
+  placeOrderButton.addEventListener('click', async () => {
       try {
         const response = await fetch('https://supersimplebackend.dev/orders', {
           method: 'POST',
@@ -76,7 +72,8 @@ export function renderPaymentSummary(){
     
         const order = await response.json();
         addOrder(order);
-        clearCart();
+        resetCart();
+
       } catch (error) {
         console.log('Unexpected error. Try again later.');
       }
@@ -87,4 +84,9 @@ export function renderPaymentSummary(){
   document.querySelector('.js-payment-summary-quantity').innerHTML = `
     Items (${getCartQuantity()}):
   `
+
+  if (cart.length === 0){
+    placeOrderButton.disabled = true;
+    placeOrderButton.style.opacity = '50%';
+  }
 }

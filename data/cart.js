@@ -49,6 +49,11 @@ export function removeFromCart(productId){
   saveToStorage(); 
 }
 
+export function resetCart(){
+  cart = [];
+  saveToStorage();
+}
+
 export function getCartQuantity(){
   let cartQuantity = 0;
 

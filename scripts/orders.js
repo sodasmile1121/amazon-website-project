@@ -11,7 +11,6 @@ async function renderOrdersGrid(){
   await loadProductsFetch();
 
   let ordersHTML = '';
-
   orders.forEach((order) => {
     const orderDate = formatDateString(order.orderTime, 'MMM D');
     const totalCost = formatCurrency(order.totalCostCents);
@@ -88,6 +87,7 @@ async function renderOrdersGrid(){
   }
 
   document.querySelector('.js-orders-grid').innerHTML = ordersHTML;
+  document.querySelector('.js-cart-quantity').innerHTML = getCartQuantity();
 
   document.querySelectorAll('.js-buy-again-button').forEach((button) => {
     button.addEventListener('click', () => {
