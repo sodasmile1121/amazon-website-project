@@ -17,7 +17,6 @@ async function renderProductsGrid(){
         || product.keywords.some(keyword => keyword.toLowerCase().includes(searchItem.toLowerCase()));
     })
   }
-  console.log(filterProducts);
 
   let productsHTML = '';
 
@@ -52,7 +51,7 @@ async function renderProductsGrid(){
         </div>
   
         <div class="product-quantity-container">
-          <select>
+          <select class="js-quantity-select-${product.id}">
             <option selected value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -70,7 +69,7 @@ async function renderProductsGrid(){
         
         <div class="product-spacer"></div>
   
-        <div class="added-to-cart">
+        <div class="added-to-cart js-added-to-cart-${product.id}">
           <img src="images/icons/checkmark.png">
           Added
         </div>
@@ -88,8 +87,16 @@ async function renderProductsGrid(){
   document.querySelectorAll('.js-add-to-cart').forEach((button) => {
     button.addEventListener('click', () => {
       const productId = button.dataset.productId;
-      addToCart(productId);
+      const addTimes = document.querySelector(`.js-quantity-select-${productId}`).value;
+      for (let i=0; i<addTimes; i++){
+        addToCart(productId);
+      }
       updateCartQuantity();
+
+      document.querySelector(`.js-added-to-cart-${productId}`).style.opacity = 1;
+      setTimeout(() => {
+        document.querySelector(`.js-added-to-cart-${productId}`).style.opacity = 0;
+      }, 1000);
     })
   })
 
