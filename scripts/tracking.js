@@ -1,3 +1,4 @@
+import { getCartQuantity } from "../data/cart.js";
 import { orders, getOrder } from "../data/orders.js";
 import { getProduct, loadProductsFetch } from "../data/products.js";
 import { formatDateString, dateTimeDiff } from "./utils/date.js";
@@ -81,4 +82,5 @@ async function renderTrackPackage(){
       status.classList.add('current-status');
     }
   })
+  document.querySelector('.js-cart-quantity').innerHTML = getCartQuantity();
 }
