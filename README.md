@@ -1,4 +1,4 @@
-# Javascript-Amazon-Project
+# Amazon-Website-Project
 
 ### Demo
 
