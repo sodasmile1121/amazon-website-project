@@ -1,5 +1,9 @@
 # Javascript-Amazon-Project
 
+### Demo
+
+https://github.com/sodasmile1121/javascript-amazon-project/assets/77041041/382c3af1-06ba-420c-89bb-24c1887565c7
+
 ## Description
 
 To deepen my knowledge in software engineering, I completed a 22-hour JavaScript full course on YouTube and built this Amazon shopping website.
@@ -34,10 +38,6 @@ To deepen my knowledge in software engineering, I completed a 22-hour JavaScript
 - **Delivery Progress Bar**: Calculates and displays current progress of product delivery status.
 - **Current Status Highlight**: Highlights current status with green font.
 - **View All Products Link**: Returns to the homepage.
-
-### Project Demo
-
-https://github.com/sodasmile1121/javascript-amazon-project/assets/77041041/382c3af1-06ba-420c-89bb-24c1887565c7
 
 ## Acknowledgements
 
