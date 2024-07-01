@@ -37,7 +37,7 @@ To deepen my knowledge in software engineering, I completed a 22-hour JavaScript
 
 ### Project Demo
 
-https://github.com/sodasmile1121/javascript-amazon-project/assets/77041041/7c5435fe-1119-4f84-ac14-d8644acb9350
+https://github.com/sodasmile1121/javascript-amazon-project/assets/77041041/382c3af1-06ba-420c-89bb-24c1887565c7
 
 ## Acknowledgements
 
