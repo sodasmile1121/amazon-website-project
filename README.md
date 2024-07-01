@@ -35,29 +35,14 @@ To deepen my knowledge in software engineering, I completed a 22-hour JavaScript
 - **Current Status Highlight**: Highlights current status with green font.
 - **View All Products Link**: Returns to the homepage.
 
-### UI Snapshots
-**Homepage** 
-![](./snapshots/home.png)
+### Project Demo
 
-**Homepage - search bar**
-![](./snapshots/home-search-bar.png)
-
-**Order Page**
-![](./snapshots/order.png)
-
-**Order Page - with place your order button disabled**
-![](./snapshots/order-no-items.png)
-
-**Checkout Page**
-![](./snapshots/checkout.png)
-
-**Tracking Page**
-![](./snapshots/tracking.png)
+https://github.com/sodasmile1121/javascript-amazon-project/assets/77041041/7c5435fe-1119-4f84-ac14-d8644acb9350
 
 ## Acknowledgements
 
-I learned from the free JavaScript course provided by SuperSimpleDev channel.
-Big thanks to SuperSimpleDev's JavaScript full course!
+I would like to express my gratitude to the SuperSimpleDev channel for providing me with solid JavaScript knowledge. The homepage and order page were developed based on this course, while I independently built the checkout and tracking pages. Special thanks to SuperSimpleDev for their comprehensive JavaScript Full Course.
+
 Course Link: [SuperSimpleDev JavaScript Full Course](https://www.youtube.com/watch?v=EerdGm-ehJQ&t=54s)
 
 
