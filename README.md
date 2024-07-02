@@ -41,7 +41,7 @@ To deepen my knowledge in software engineering, I completed a 22-hour JavaScript
 
 ## Acknowledgements
 
-I would like to express my gratitude to the SuperSimpleDev channel for providing me with solid JavaScript knowledge. The homepage and order page were developed based on this course, while I independently built the checkout and tracking pages. Special thanks to SuperSimpleDev for their comprehensive JavaScript Full Course.
+I would like to express my gratitude to the SuperSimpleDev channel for providing me with solid JavaScript knowledge. This project primarily focuses on the JavaScript section, while the HTML and CSS were provided by the lecturer. The homepage and order page were developed based on this course, while I independently built the checkout and tracking pages. Special thanks to SuperSimpleDev for their comprehensive JavaScript Full Course.
 
 Course Link: [SuperSimpleDev JavaScript Full Course](https://www.youtube.com/watch?v=EerdGm-ehJQ&t=54s)
 
